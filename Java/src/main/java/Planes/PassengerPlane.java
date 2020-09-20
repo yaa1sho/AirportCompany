@@ -5,7 +5,7 @@ import java.util.Objects;
 public class PassengerPlane extends Plane{
 
     //=================FIELDS=================
-    private int passengersCapacity;
+    private final int passengersCapacity;
 
     //=================CONSTRUCTORS=================
     public PassengerPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int passengersCapacity) {
@@ -35,13 +35,21 @@ public class PassengerPlane extends Plane{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PassengerPlane)) return false;
-        if (!super.equals(o)) return false;
-        PassengerPlane plane = (PassengerPlane) o;
-        return passengersCapacity == plane.passengersCapacity;
+        boolean result = false;
+        if (this == o) {
+            result = true;
+        } else if (o instanceof PassengerPlane) {
+            if (super.equals(o)) {
+                PassengerPlane plane = (PassengerPlane) o;
+                result = passengersCapacity == plane.passengersCapacity;
+            }
+        }
+        return result;
     }
 
+    /**
+     * @return
+     */
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), passengersCapacity);
