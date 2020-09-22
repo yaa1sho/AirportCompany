@@ -26,13 +26,6 @@ public class PassengerPlane extends Plane{
                 '}');
     }
 
-//    @Override
-//    public String toString() {
-//        return super.toString().replace("}",
-//                ", passengersCapacity=" + passengersCapacity +
-//                        '}');
-//    }
-
     @Override
     public boolean equals(Object o) {
         boolean result = false;
@@ -47,9 +40,6 @@ public class PassengerPlane extends Plane{
         return result;
     }
 
-    /**
-     * @return
-     */
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), passengersCapacity);

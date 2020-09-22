@@ -16,6 +16,13 @@ import java.util.List;
 public class Airport {
     private final List<? extends Plane> planes;
 
+    public Airport(List<? extends Plane> planes) {
+        this.planes = planes;
+    }
+
+    public List<? extends Plane> getPlanes() {
+        return planes;
+    }
 
     public List<PassengerPlane> getPassengerPlane() {
         List<? extends Plane> planes = this.planes;
@@ -78,31 +85,19 @@ public class Airport {
         return experimentalPlanes;
     }
 
-    public Airport sortByMaxDistance() {
-        planes.sort((Comparator<Plane>) (firstPlane, secondPlane) ->
-                firstPlane.getMaxFlightDistance() - secondPlane.getMaxFlightDistance());
-        return this;
-    }
-
-
-    /**
-     * Sorts by max speed
-     * @return Airport
-     */
-    public Airport sortByMaxSpeed() {
+    public void sortByMaxSpeed() {
         planes.sort((Comparator<Plane>) (firstPlane, secondPlane)
                 -> firstPlane.getMaxSpeed() - secondPlane.getMaxSpeed());
-        return this;
     }
 
-    public Airport sortByMaxLoadCapacity() {
+    public void sortByMaxLoadCapacity() {
         planes.sort((Comparator<Plane>) (firstPlane, secondPlane)
                 -> firstPlane.getMinLoadCapacity() - secondPlane.getMinLoadCapacity());
-        return this;
     }
 
-    public List<? extends Plane> getPlanes() {
-        return planes;
+    public void sortByMaxDistance() {
+        planes.sort((Comparator<Plane>) (firstPlane, secondPlane) ->
+                firstPlane.getMaxFlightDistance() - secondPlane.getMaxFlightDistance());
     }
 
     private void print(Collection<? extends Plane> collection) {
@@ -115,11 +110,6 @@ public class Airport {
         return "Airport{" +
                 "Planes=" + planes.toString() +
                 '}';
-    }
-
-    //Constructor
-    public Airport(List<? extends Plane> planes) {
-        this.planes = planes;
     }
 
 }
